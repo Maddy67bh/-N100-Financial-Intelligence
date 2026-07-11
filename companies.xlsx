@@ -1,0 +1,31 @@
+import pandas as pd
+from pathlib import Path
+
+folder = Path("data/raw")
+folder.mkdir(parents=True, exist_ok=True)
+
+companies = pd.DataFrame({
+    "company_id": [1,2,3,4,5],
+    "ticker": ["RELIANCE","TCS","INFY","HDFCBANK","ICICIBANK"],
+    "company_name": [
+        "Reliance Industries",
+        "Tata Consultancy Services",
+        "Infosys",
+        "HDFC Bank",
+        "ICICI Bank"
+    ],
+    "sector": [
+        "Energy",
+        "IT",
+        "IT",
+        "Banking",
+        "Banking"
+    ]
+})
+
+companies.to_excel(
+    folder / "companies.xlsx",
+    index=False
+)
+
+print("companies.xlsx created")
